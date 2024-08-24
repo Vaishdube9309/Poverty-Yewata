@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Certificate</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* min-height: 100vh; */
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+    .certificate {
+      width: 800px;
+      border: 2px solid #000;
+      padding: 10mm;
+      background-color: #fff;
+      box-sizing: border-box;
+    }
+    h2{text-align: center ;}
+    .header {
+      display: flex;
+      flex-direction: column;
+    }
+    .flex-container {
+      display: flex;
+      align-items: center;
+      margin-top: -30px;
+    }
+    .content p {
+      margin: 20px 0;
+    }
+    .right p {
+      margin-left: 500px;
+    }
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 55px;
+    }
+    .footer .left {
+      width: 45%;
+    }
+    .footer .right1 {
+      width: 45%;
+      text-align: right;
+    }
+    .footer-link {
+      text-align: center;
+    }
+    span {
+      display: inline-block;
+      min-width: 140px;
+      color: rgb(8, 8, 8);
+      border-bottom: 1px solid black;
+    }
+  </style>
+</head>
+<body onload="loadData()">
+  <div class="certificate">
+    <div class="header">
+      <div class="flex-container">
+        <p>ग्रापंचायत कार्यालय <span id="office"></span> ता. <span id="tal"></span> जि. <span id="dist"></span></p>
+      </div>
+      <div class="flex-container">
+        <p>Grampanchayat office <span id="office1"></span> tal <span id="tal1"></span> Dist <span id="dist1"></span></p>
+      </div>
+      <div class="right">
+        <h2>दारीद्रयरेषेखालील कुंटूंबाचा दाखला <br> Below poverty line certificate</h2>
+        <p>जा.क्र./Dispatch no.:<span id="dispatchNo"></span></p>
+        <p>दिनांक/Date: <span id="date"></span></p>
+      </div>
+    </div>
+    <div class="content">
+      <p>ग्रामसेवक/ग्रामविकास अधिकारी Gramsevak /Village Development Officer यांकरून दाखला देण्यात येतो की, Grampanchayat.is issuing the certificate that</p>
+      <p>श्री./श्रीमती <span id="name"></span></p>
+      <p>Mr./Mrs. <span id="name1"></span></p>
+      <p>आधार कार्ड क्र.: <span id="aadharNo"></span> Adhar Card Number: <span id="aadharNo1"></span></p>
+      <p>राहाणे <span id="residence"></span> ता. <span id="residenceTal"></span> जि. <span id="residenceDist"></span> महाराष्ट्र</p>
+      <p>Residing at <span id="residence1"></span> tal. <span id="residenceTal1"></span> Dist <span id="residenceDist1"></span>, Maharashtra</p>
+      <p>यांचा क्रम <span id="year"></span> या वर्षातील दारीद्रयरेषेखालील यादीतील क्रमांक <span id="bplNo"></span> आहे.</p>
+      <p>In the year <span id="year1"></span> Below poverty line list no. <span id="bplNo1"></span></p>
+      <p>श्री./श्रीमती <span id="nameReq"></span> हा /ही/ त्यांचा/तिचा <span id="relation"></span> आहे.</p>
+      <p>Certificate is issued on request of applicant.</p>
+    </div>
+    <div class="footer">
+      <div class="left">
+        <p>ठिकाण: <span id="place"></span></p>
+        <p>Place: <span id="place1"></span></p>
+      </div>
+      <div class="right1">
+        <p>सही व शिक्का Signature with stamp</p>
+        <p>ग्रामसेवक ग्रामविकास अधिकारी<br>Gramsevak /Village Development Officer</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function getQueryParams() {
+      const params = new URLSearchParams(window.location.search);
+      return JSON.parse(params.get('data'));
+    }
+
+    function populateCertificate(data) {
+      document.getElementById('office').textContent = data[0];
+      document.getElementById('tal').textContent = data[1];
+      document.getElementById('dist').textContent = data[2];
+      document.getElementById('dispatchNo').textContent = data[3];
+      document.getElementById('date').textContent = data[4];
+      document.getElementById('name').textContent = data[5];
+      document.getElementById('aadharNo').textContent = data[6];
+      document.getElementById('residence').textContent = data[7];
+      document.getElementById('residenceTal').textContent = data[8];
+      document.getElementById('residenceDist').textContent = data[9];
+      document.getElementById('year').textContent = data[10];
+      document.getElementById('bplNo').textContent = data[11];
+      document.getElementById('nameReq').textContent = data[13];
+      document.getElementById('relation').textContent = data[12];
+      document.getElementById('place').textContent = data[14];
+
+      // Populate English fields
+      document.getElementById('office1').textContent = data[0];
+      document.getElementById('tal1').textContent = data[1];
+      document.getElementById('dist1').textContent = data[2];
+      document.getElementById('name1').textContent = data[5];
+      document.getElementById('aadharNo1').textContent = data[6];
+      document.getElementById('residence1').textContent = data[7];
+      document.getElementById('residenceTal1').textContent = data[8];
+      document.getElementById('residenceDist1').textContent = data[9];
+      document.getElementById('year1').textContent = data[10];
+      document.getElementById('bplNo1').textContent = data[11];
+      document.getElementById('place1').textContent = data[14];
+    }
+
+    window.onload = function() {
+      const data = getQueryParams();
+      populateCertificate(data);
+    }
+  </script>
+</body>
+</html>
